@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.cinebook.controller.HomeController" styleClass="root-pane">
+    <top>
+        <VBox spacing="10" styleClass="top-bar">
+            <padding><Insets top="14" right="20" bottom="14" left="20"/></padding>
+
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="CineBook" styleClass="brand-title"/>
+                <Label fx:id="welcomeLabel" styleClass="muted-text"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button text="My Bookings" onAction="#onMyBookings"/>
+                <Button text="Admin" onAction="#onAdmin"/>
+                <Button text="Logout" onAction="#onLogout" styleClass="secondary-button"/>
+            </HBox>
+
+            <HBox spacing="10" alignment="CENTER_LEFT" styleClass="panel">
+                <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
+                <TextField fx:id="searchField" promptText="Search movies, genres..." onKeyReleased="#onFilter" HBox.hgrow="ALWAYS"/>
+                <ComboBox fx:id="genreFilter" onAction="#onFilter" prefWidth="200"/>
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+        <ScrollPane fitToWidth="true" styleClass="transparent-scroll">
+            <content>
+                <VBox spacing="12">
+                    <padding><Insets top="16" right="20" bottom="20" left="20"/></padding>
+                    <Label text="Now Showing" styleClass="section-title"/>
+                    <TilePane fx:id="movieContainer" hgap="16" vgap="16" prefColumns="3" styleClass="content-grid"/>
+                </VBox>
+            </content>
+        </ScrollPane>
+    </center>
+</BorderPane>

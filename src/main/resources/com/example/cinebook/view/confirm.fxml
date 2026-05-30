@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.cinebook.controller.ConfirmController" styleClass="root-pane">
+    <center>
+        <VBox spacing="16" alignment="CENTER" maxWidth="900">
+            <padding><Insets top="22" right="22" bottom="22" left="22"/></padding>
+
+            <Label text="Confirm Your Booking" styleClass="section-title"/>
+
+            <HBox spacing="16" styleClass="panel">
+                <padding><Insets top="16" right="16" bottom="16" left="16"/></padding>
+
+                <GridPane hgap="12" vgap="10" HBox.hgrow="ALWAYS">
+                    <Label text="Movie" GridPane.rowIndex="0" GridPane.columnIndex="0" styleClass="muted-text"/>
+                    <Label fx:id="movieLabel" GridPane.rowIndex="0" GridPane.columnIndex="1" styleClass="movie-title"/>
+
+                    <Label text="Showtime" GridPane.rowIndex="1" GridPane.columnIndex="0" styleClass="muted-text"/>
+                    <Label fx:id="showtimeLabel" GridPane.rowIndex="1" GridPane.columnIndex="1" styleClass="movie-title"/>
+
+                    <Label text="Seats" GridPane.rowIndex="2" GridPane.columnIndex="0" styleClass="muted-text"/>
+                    <Label fx:id="seatsLabel" GridPane.rowIndex="2" GridPane.columnIndex="1" styleClass="movie-title" wrapText="true"/>
+                </GridPane>
+
+                <VBox spacing="8" prefWidth="260" styleClass="stat-card">
+                    <Label text="Total Amount" styleClass="muted-text"/>
+                    <Label fx:id="totalLabel" styleClass="brand-title"/>
+                </VBox>
+            </HBox>
+
+            <VBox spacing="10" styleClass="panel" maxWidth="900">
+                <padding><Insets top="14" right="14" bottom="14" left="14"/></padding>
+                <Label text="Payment Reference / Voucher" styleClass="movie-title"/>
+                <TextField fx:id="paymentRefField" promptText="Enter transaction ID"/>
+                <HBox spacing="10">
+                    <Button text="Confirm Booking" onAction="#onConfirmBooking" styleClass="accent-button"/>
+                    <Button text="Go Back" onAction="#onBack" styleClass="secondary-button"/>
+                </HBox>
+            </VBox>
+        </VBox>
+    </center>
+</BorderPane>

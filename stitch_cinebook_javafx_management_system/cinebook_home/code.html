@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CineBook | Premium Movie Ticketing</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-bright": "#3a3939",
+                    "on-primary-container": "#5f4800",
+                    "tertiary-fixed-dim": "#bbc5eb",
+                    "outline-variant": "#4f4633",
+                    "tertiary-fixed": "#dae1ff",
+                    "on-secondary-container": "#b8b6d0",
+                    "on-error": "#690005",
+                    "on-primary": "#3e2e00",
+                    "primary-container": "#e8b400",
+                    "primary-fixed-dim": "#f4bf19",
+                    "on-tertiary-fixed": "#0f1a37",
+                    "on-tertiary-fixed-variant": "#3b4665",
+                    "on-secondary-fixed": "#1a1a2e",
+                    "surface-container-high": "#2a2a2a",
+                    "surface-container": "#201f1f",
+                    "secondary": "#c6c4df",
+                    "tertiary-container": "#b0badf",
+                    "surface-variant": "#353534",
+                    "on-secondary-fixed-variant": "#45455b",
+                    "surface-dim": "#131313",
+                    "surface-tint": "#f4bf19",
+                    "primary-fixed": "#ffdf96",
+                    "error-container": "#93000a",
+                    "secondary-fixed": "#e2e0fc",
+                    "secondary-fixed-dim": "#c6c4df",
+                    "on-primary-fixed": "#251a00",
+                    "inverse-primary": "#765a00",
+                    "on-surface": "#e5e2e1",
+                    "tertiary": "#cbd6fc",
+                    "on-error-container": "#ffdad6",
+                    "inverse-on-surface": "#313030",
+                    "on-background": "#e5e2e1",
+                    "surface": "#131313",
+                    "secondary-container": "#47475d",
+                    "surface-container-highest": "#353534",
+                    "surface-container-low": "#1c1b1b",
+                    "on-primary-fixed-variant": "#594400",
+                    "outline": "#9b8f79",
+                    "on-tertiary": "#252f4d",
+                    "background": "#131313",
+                    "inverse-surface": "#e5e2e1",
+                    "surface-container-lowest": "#0e0e0e",
+                    "on-surface-variant": "#d2c5ac",
+                    "on-secondary": "#2f2e43",
+                    "primary": "#ffd15c",
+                    "on-tertiary-container": "#3f4a69",
+                    "error": "#ffb4ab"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "container-max-width": "1280px",
+                    "base": "8px",
+                    "margin-mobile": "16px",
+                    "margin-desktop": "48px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-xl": ["Inter"],
+                    "label-md": ["Inter"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #0D0D0D;
+            color: #E5E2E1;
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .cinematic-card {
+            background-color: #16213E;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .cinematic-card:hover {
+            border-color: #ffd15c;
+            box-shadow: 0px 0px 12px rgba(232, 180, 0, 0.2);
+            transform: translateY(-4px);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #1c1b1b;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #4f4633;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-surface-container border-b border-outline-variant">
+<div class="flex justify-between items-center w-full px-margin-desktop py-4 max-w-container-max-width mx-auto">
+<div class="flex items-center gap-12">
+<span class="text-headline-md font-headline-md font-bold text-primary tracking-tight">CineBook</span>
+<div class="hidden md:flex relative w-96">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-[#16213E] border border-outline-variant/20 rounded-full py-2 pl-10 pr-4 text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" placeholder="Search movies, genres..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<button class="relative hover:bg-surface-bright p-2 rounded-full transition-colors duration-200">
+<span class="material-symbols-outlined text-primary" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<div class="flex items-center gap-3 pl-4 border-l border-outline-variant">
+<img alt="User Avatar" class="w-10 h-10 rounded-full border-2 border-primary-container object-cover" data-alt="A professional studio portrait of a sophisticated young man with a friendly expression. The lighting is dramatic and cinematic, with a warm rim light that highlights his profile against a dark, textured background. The overall aesthetic is high-end and modern, featuring deep shadows and rich, warm skin tones that align with a premium theater lobby ambiance." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuIYIpTunmR1kSiXW8sLFKajbrr0evW5yUc_kESkqkRyeBl8LjLFwQCbhhmgPHuKzksb76JbmjkGj4w84ukXvqlJQTwQ22cyDJ7w-qrFVZhWCxBqIKh7gYUEb-0_rTb73rsEw-mwpVyKQSsJCp14GIGODQ6nruW1kTOP-XC6kI-KpOTBhhk8KkL7GU1R5wmo8cRI9KDBUXnibEI_uD0u-cq9u9l5k6NWlc9AQEUDug7VpfTbqcrFxOrDNGLBaWaaKQlBptTog7Xmo"/>
+<button class="flex items-center gap-1 text-on-surface-variant hover:text-primary transition-colors" data-icon="logout">
+<span class="material-symbols-outlined">logout</span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<div class="flex pt-24 max-w-container-max-width mx-auto px-margin-desktop gap-gutter">
+<!-- SideNav (Persistent Desktop) -->
+<aside class="hidden lg:flex flex-col w-64 h-[calc(100vh-120px)] sticky top-24 gap-8">
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 bg-secondary-container text-on-secondary-container rounded-full px-4 py-3 shadow-[0px_0px_12px_rgba(232,180,0,0.2)] transition-transform duration-150 scale-[0.98]" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="text-label-md font-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-variant px-4 py-3 rounded-full transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="movie">movie</span>
+<span class="text-label-md font-label-md">Movies</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-variant px-4 py-3 rounded-full transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="confirmation_number">confirmation_number</span>
+<span class="text-label-md font-label-md">Bookings</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:bg-surface-variant px-4 py-3 rounded-full transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="text-label-md font-label-md">Statistics</span>
+</a>
+</nav>
+<div class="flex flex-col gap-4">
+<h3 class="text-label-sm font-label-sm uppercase tracking-widest text-on-surface-variant px-4">Now Showing</h3>
+<div class="flex flex-col gap-3 px-2 overflow-y-auto custom-scrollbar max-h-64">
+<!-- Dynamic List Item -->
+<div class="flex items-center gap-3 p-2 hover:bg-surface-variant/50 rounded-lg cursor-pointer transition-all">
+<div class="w-10 h-14 bg-surface-container-high rounded overflow-hidden">
+<img alt="Mini Poster" class="w-full h-full object-cover" data-alt="A moody, close-up shot of a vintage cinema projector lens glowing in a dark room. The lighting is low-key with intense amber highlights reflecting off the glass. The background is a soft-focus bokeh of dark theater seating. This image conveys a sense of anticipation and the classic magic of the big screen experience." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxWaviCcAs6w0YxQei3clyF7tOff3hv1F9kw7xT2VT7rn1MHbwPMlqV5ElnQqaU3XogYMwzMRDhzeZR6H9B_OO1wmZhT7YJDP6duV7rIAb3FMgvbq6TZmUCG2g9wl89oYyV_mp-ahVoMIjiz3Sf163fBPGJtFlDdAJAobjrVNPo_vZCZdrxr-va8NW8SVLhoL3Pse16d3TOGiG_Ej5xBG-jPTfu9wWWwNM0_dfFb7cKoWQ_KmBBkxBxkWISLft8dV5n42WGN9IRuE"/>
+</div>
+<div class="flex flex-col">
+<span class="text-label-md font-bold truncate w-32">Joker: Folie à Deux</span>
+<span class="text-[10px] text-on-surface-variant">Drama | 15+</span>
+</div>
+</div>
+<!-- Mocking more for scroll -->
+<div class="text-center py-2 text-primary font-label-sm hover:underline cursor-pointer">View All (24)</div>
+</div>
+</div>
+<div class="mt-auto flex flex-col gap-2 border-t border-outline-variant pt-4">
+<a class="flex items-center gap-3 text-on-surface-variant hover:text-on-surface px-4 py-2 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="text-label-md font-label-md">Settings</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:text-on-surface px-4 py-2 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+<span class="text-label-md font-label-md">Help</span>
+</a>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 pb-12">
+<!-- Filters & Sorting -->
+<section class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8">
+<div class="flex flex-wrap gap-2">
+<button class="px-6 py-2 rounded-full bg-primary text-on-primary font-label-md shadow-[0px_0px_12px_rgba(232,180,0,0.3)] transition-all">All</button>
+<button class="px-6 py-2 rounded-full border border-outline-variant text-on-surface-variant font-label-md hover:border-primary hover:text-primary transition-all">Action</button>
+<button class="px-6 py-2 rounded-full border border-outline-variant text-on-surface-variant font-label-md hover:border-primary hover:text-primary transition-all">Drama</button>
+<button class="px-6 py-2 rounded-full border border-outline-variant text-on-surface-variant font-label-md hover:border-primary hover:text-primary transition-all">Comedy</button>
+<button class="px-6 py-2 rounded-full border border-outline-variant text-on-surface-variant font-label-md hover:border-primary hover:text-primary transition-all">Horror</button>
+<button class="px-6 py-2 rounded-full border border-outline-variant text-on-surface-variant font-label-md hover:border-primary hover:text-primary transition-all">Sci-Fi</button>
+</div>
+<div class="flex items-center gap-3 bg-[#16213E] px-4 py-2 rounded-full border border-outline-variant/30">
+<span class="text-label-sm text-on-surface-variant">Sort by:</span>
+<select class="bg-transparent text-primary font-label-md focus:outline-none cursor-pointer">
+<option class="bg-surface-container">Latest</option>
+<option class="bg-surface-container">Price</option>
+<option class="bg-surface-container">Rating</option>
+</select>
+</div>
+</section>
+<!-- Movie Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+<!-- Movie Card 1 -->
+<div class="cinematic-card rounded-xl p-4 border border-outline-variant/20 flex flex-col group">
+<div class="relative aspect-[2/3] rounded-lg overflow-hidden mb-4">
+<img alt="Inception 2" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A mesmerizing cinematic movie poster featuring a surreal architectural dreamscape where a modern city is folding onto itself in mid-air. The scene is bathed in cold blue moonlight and punctuated by glowing amber windows. The style is high-contrast and atmospheric, with sharp digital details and a deep sense of scale and wonder, perfectly capturing a high-concept sci-fi mood." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWvz8mQtKjBRTv0Kuib3m1YkfCpAFcPaTqvMPJjwrfGd3NgZnTYN2koEvrZLoHD4t-9BEfQX9yiLtjhuB6YkCxGLZQn6972ta9AW_He_Pyu3axmxdr17NPaymthmh33OlU3CejTiWH0egmtZT31BoYp32vQyCQvEsyl1jTyHtebw7VHXk55nP6bWGTPyp94omWkFvGZQakjNIbH15ivfNzD5rS4H6BKN4x-b9vibxvyjV5QzL11bjsvDNI6QPhmhAemqABF4s1ZXs"/>
+<div class="absolute top-3 right-3 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-primary text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-label-sm font-bold">4.8</span>
+</div>
+</div>
+<div class="flex justify-between items-start mb-2">
+<h2 class="text-headline-md font-bold leading-tight">Inception 2</h2>
+<span class="text-primary font-bold">PKR 850</span>
+</div>
+<div class="flex items-center gap-3 text-on-surface-variant text-label-sm mb-4">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">movie</span> Sci-Fi</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">schedule</span> 2h 15m</span>
+</div>
+<div class="mt-auto flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-[10px] uppercase text-on-surface-variant">Next Show</span>
+<span class="text-label-md font-bold text-primary">7:30 PM</span>
+</div>
+<button class="bg-primary hover:bg-primary-container text-on-primary font-bold py-2 px-6 rounded-full transition-all flex items-center gap-2">
+                            Book <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Movie Card 2 -->
+<div class="cinematic-card rounded-xl p-4 border border-outline-variant/20 flex flex-col group">
+<div class="relative aspect-[2/3] rounded-lg overflow-hidden mb-4">
+<img alt="The Dark Knight Returns" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A dark and gritty cinematic movie poster showing a silhouetted hero standing atop a gothic skyscraper looking over a rainy, neon-lit city at night. Intense golden searchlights cut through the stormy sky. The visual style is noir-inspired with high contrast, deep blacks, and electric amber highlights, evoking a powerful sense of action and drama in a professional comic-book aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnLMWZ9951MmhQ-OpDSKKl11UKSdQ-TaP6ff21EGzSvHJlSE_IC0YbR98aEwPWo4HDZCzUgXdks-sdq5-CvCyQx1QiVWmvCAmuym85ShnEA7-vB8EsMNSxROAJgvcE93Ak52hb7DSTIL5tJUYaMMAAByhyJ9RVTELiJ61UQMRjdzC8lruNb3ft214YQXxVdFxe202T_4vZJw9wNaJ9pG5Fd3V5ZkJhj3ZU4L9hoex9pgxRBpKcY1e8PbpnHgFvUmDnCDRi9J0mv9Y"/>
+<div class="absolute top-3 right-3 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-primary text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-label-sm font-bold">4.9</span>
+</div>
+</div>
+<div class="flex justify-between items-start mb-2">
+<h2 class="text-headline-md font-bold leading-tight">The Dark Knight Returns</h2>
+<span class="text-primary font-bold">PKR 850</span>
+</div>
+<div class="flex items-center gap-3 text-on-surface-variant text-label-sm mb-4">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">movie</span> Action</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">schedule</span> 2h 40m</span>
+</div>
+<div class="mt-auto flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-[10px] uppercase text-on-surface-variant">Next Show</span>
+<span class="text-label-md font-bold text-primary">9:00 PM</span>
+</div>
+<button class="bg-primary hover:bg-primary-container text-on-primary font-bold py-2 px-6 rounded-full transition-all flex items-center gap-2">
+                            Book <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Movie Card 3 -->
+<div class="cinematic-card rounded-xl p-4 border border-outline-variant/20 flex flex-col group">
+<div class="relative aspect-[2/3] rounded-lg overflow-hidden mb-4">
+<img alt="Interstellar 3" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="An awe-inspiring space exploration movie poster featuring a massive, glowing black hole with a swirling golden accretion disk set against a backdrop of distant nebulae and stars. A tiny spacecraft is seen in the foreground, creating a massive sense of scale. The lighting is cinematic and dramatic, with warm amber light contrasting against the infinite black of deep space, styled like a modern sci-fi epic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4yOodp4Tkg-nFKzrPMO4JqKoIB7wxQLfXz62tfr3r6FUMfHH2SbQsdCvr9f_DT4AU3yauqzUKNS6JUUEbNH55A07_XFBTKfOZ8d3tLTqs8WYA37PcYYaW1dmxufCOqYBjlsfZGKJHGMInQwZwZimL1eHELgo5qd8rvKtTBjPwaHHEbYoOQhV1lYpRIDS2qhgy-Kryy1kgou3DPSPhjT9XtSUKHEm0ExTfDpKckixHJQO7JYZc1D5S3M8oD7NFTKJC-I8Y_bSJWz8"/>
+<div class="absolute top-3 right-3 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-primary text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-label-sm font-bold">4.7</span>
+</div>
+</div>
+<div class="flex justify-between items-start mb-2">
+<h2 class="text-headline-md font-bold leading-tight">Interstellar 3</h2>
+<span class="text-primary font-bold">PKR 850</span>
+</div>
+<div class="flex items-center gap-3 text-on-surface-variant text-label-sm mb-4">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">movie</span> Sci-Fi</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">schedule</span> 2h 50m</span>
+</div>
+<div class="mt-auto flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-[10px] uppercase text-on-surface-variant">Next Show</span>
+<span class="text-label-md font-bold text-primary">8:15 PM</span>
+</div>
+<button class="bg-primary hover:bg-primary-container text-on-primary font-bold py-2 px-6 rounded-full transition-all flex items-center gap-2">
+                            Book <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Movie Card 4 -->
+<div class="cinematic-card rounded-xl p-4 border border-outline-variant/20 flex flex-col group">
+<div class="relative aspect-[2/3] rounded-lg overflow-hidden mb-4">
+<img alt="Dune: Part Three" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A breathtaking cinematic landscape of a vast desert world with massive, rolling sand dunes under two large moons. A lone traveler in futuristic desert gear stands on a ridge, their cloak catching a golden sunset light. The atmosphere is hazy and epic, with a palette of deep oranges, warm ambers, and soft shadows, capturing the grand scale and mysterious mood of a desert sci-fi adventure." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIe_1MQnaoF1pItb_WI_ytW76EqukYt7QiQd-Fb0Rsi5YJ8LFQV1eJqcRU8VhxtEfkCVLUI1jI6nk5x3ZVL8nuTcYATYDGGpJXKnsPprmvzYEHduFwitVKYNbLpC7i5L7J903PwQ8hlAD2Z0LeeT9X5jD02O_gvWdiye-nTFglYFVUDp9KcoxPptOwSthTbJdv-6C_SKmTmwwoIYWuP3aykpx3_gbNBZutiiz9OmAz90fg23_CL8yaJ0fYVcCjJ5n2MGCml1pJo1s"/>
+<div class="absolute top-3 right-3 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-primary text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-label-sm font-bold">4.6</span>
+</div>
+</div>
+<div class="flex justify-between items-start mb-2">
+<h2 class="text-headline-md font-bold leading-tight">Dune: Part Three</h2>
+<span class="text-primary font-bold">PKR 850</span>
+</div>
+<div class="flex items-center gap-3 text-on-surface-variant text-label-sm mb-4">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">movie</span> Sci-Fi</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">schedule</span> 2h 35m</span>
+</div>
+<div class="mt-auto flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-[10px] uppercase text-on-surface-variant">Next Show</span>
+<span class="text-label-md font-bold text-primary">7:00 PM</span>
+</div>
+<button class="bg-primary hover:bg-primary-container text-on-primary font-bold py-2 px-6 rounded-full transition-all flex items-center gap-2">
+                            Book <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Movie Card 5 -->
+<div class="cinematic-card rounded-xl p-4 border border-outline-variant/20 flex flex-col group">
+<div class="relative aspect-[2/3] rounded-lg overflow-hidden mb-4">
+<img alt="Oppenheimer II" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A dramatic historical drama movie poster featuring a focused man in a vintage suit standing before a massive, complex machine in a dimly lit industrial laboratory. Soft, warm light spills from an open door, creating high-contrast silhouettes. The mood is intense and intellectual, with a rich color palette of deep navy and bright amber highlights, rendered in a professional cinematic photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvVBPhro1arPQQQPI7cMINQFNODrDz9Gy3ZcfTbH7VglNp2AujHO1IVVt67WgcX3YJD3gRfRqH60Q7hw7HydDpIWOiCkqKayb7IvBsnVE64z8-X5bLPnPBiFwUnNqrAc_Z47xX-Ec7CgjQrwYoatp211nfGjiQunKIa4GcMxsgVDHvxvbLSOlsRihKVuCOp6cpK9u4t5Rcy6M_OYsBUuV9WA37Vedk7x2Mjw-r_I-9H4kz7mOBEDPySBJNsT-SzyPRGaZfOndtoN0"/>
+<div class="absolute top-3 right-3 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-primary text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-label-sm font-bold">4.5</span>
+</div>
+</div>
+<div class="flex justify-between items-start mb-2">
+<h2 class="text-headline-md font-bold leading-tight">Oppenheimer II</h2>
+<span class="text-primary font-bold">PKR 850</span>
+</div>
+<div class="flex items-center gap-3 text-on-surface-variant text-label-sm mb-4">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">movie</span> Drama</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">schedule</span> 3h 05m</span>
+</div>
+<div class="mt-auto flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-[10px] uppercase text-on-surface-variant">Next Show</span>
+<span class="text-label-md font-bold text-primary">6:45 PM</span>
+</div>
+<button class="bg-primary hover:bg-primary-container text-on-primary font-bold py-2 px-6 rounded-full transition-all flex items-center gap-2">
+                            Book <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Movie Card 6 -->
+<div class="cinematic-card rounded-xl p-4 border border-outline-variant/20 flex flex-col group">
+<div class="relative aspect-[2/3] rounded-lg overflow-hidden mb-4">
+<img alt="Avatar 4" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A lush, bioluminescent alien forest at night from a vibrant sci-fi movie. Glowing plants in shades of neon blue, violet, and amber illuminate the dense tropical foliage. The lighting is ethereal and otherworldly, with soft glares and floating particles creating a magical atmosphere. The style is highly detailed digital art with a rich, high-contrast palette that emphasizes depth and vibrancy." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2xQNuTdgNqDsKe8pjM1MVt-jPLi5_BYa_CUO38zXojwRc7v_zlRfGnyCEHjlF6zYWpChUW4RyZ3LLOnTkJxxjipzTLfegiMXUiLR7l9_NqKv9W0J9JKKkmWzDWOlvZT5A8xzvq4u484IDsfdUUm48Be7klh4etEiAaEbISbrL7lrfBnffHsyP2K2I_xKAFFqueLwMnjPnYH2iQJWC2L0BZWLnUMLqRP5hHiXg_JZeGo2bAZiHIO7nUQxg29c4_9tH6-ejkSSUgzM"/>
+<div class="absolute top-3 right-3 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-primary text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-label-sm font-bold">4.4</span>
+</div>
+</div>
+<div class="flex justify-between items-start mb-2">
+<h2 class="text-headline-md font-bold leading-tight">Avatar 4</h2>
+<span class="text-primary font-bold">PKR 850</span>
+</div>
+<div class="flex items-center gap-3 text-on-surface-variant text-label-sm mb-4">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">movie</span> Sci-Fi</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">schedule</span> 3h 10m</span>
+</div>
+<div class="mt-auto flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-[10px] uppercase text-on-surface-variant">Next Show</span>
+<span class="text-label-md font-bold text-primary">5:30 PM</span>
+</div>
+<button class="bg-primary hover:bg-primary-container text-on-primary font-bold py-2 px-6 rounded-full transition-all flex items-center gap-2">
+                            Book <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Right Sidebar: Upcoming Bookings -->
+<aside class="hidden xl:flex flex-col w-80 sticky top-24 h-[calc(100vh-120px)] gap-8">
+<div class="bg-[#16213E] rounded-2xl p-6 border border-outline-variant/30 flex flex-col gap-6">
+<div class="flex items-center justify-between">
+<h3 class="text-headline-md font-bold">My Bookings</h3>
+<span class="bg-primary/20 text-primary text-[10px] px-2 py-1 rounded-full font-bold">2 UPCOMING</span>
+</div>
+<div class="flex flex-col gap-4">
+<!-- Booking Item 1 -->
+<div class="flex gap-4 group cursor-pointer">
+<div class="w-16 h-20 rounded-lg overflow-hidden flex-shrink-0">
+<img alt="Thumbnail" class="w-full h-full object-cover" data-alt="A stylized, close-up movie poster thumbnail showing a twisting architectural cityscape under a glowing blue sky. The image uses sharp lines and cold cinematic tones, with warm amber light emanating from within the buildings, creating a high-contrast futuristic sci-fi aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8cDX67femU9TJxNpG6OWl46Yxex6NVGtahp9EKBQ2Mg_YBd2kmvy4AQLo_aVuLhWUvEDL-yA-siUAILiChC5U5CDbX4oiUeygFiWUHL-RFCkqqo8nwwCvywnBcVkOoiHldjg696sW0eKvj3KUn-9SR-Y5eCtqT8WnHzfB9p42EaYMxOW4tP-HyRTuS3kandLJrmQPie7j_E9T8VrhcJ9XCnSu1zj8pq288e7tWROaPfSqWk6_3DkRRg8Dxqt-EXBFXuMVOnQPSlU"/>
+</div>
+<div class="flex flex-col justify-center">
+<h4 class="text-label-md font-bold text-on-surface group-hover:text-primary transition-colors">Inception 2</h4>
+<p class="text-[12px] text-on-surface-variant">Tomorrow, 7:30 PM</p>
+<p class="text-[12px] text-primary">Hall 4, Seat E12, E13</p>
+</div>
+</div>
+<!-- Booking Item 2 -->
+<div class="flex gap-4 group cursor-pointer">
+<div class="w-16 h-20 rounded-lg overflow-hidden flex-shrink-0">
+<img alt="Thumbnail" class="w-full h-full object-cover" data-alt="A moody cinematic thumbnail of a silhouetted hero standing in a rain-slicked urban environment. The scene is illuminated by dramatic yellow streetlights and flashes of neon, creating a gritty noir-inspired action movie aesthetic with deep shadows and intense atmospheric lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiLzYktg_e6ptFzNBSJOaW0-QS8MUnMBwc8A0hwqQqnBW5Twur65qy4UM6Z4C9zFxY_dum_Nt2etapSM9OLpEjgY15x2Hez8bw5h0po3CTI0raPSiavlwtnjZnN0bGKO9f57-PbW9xhlDvRjOiw-ZJwJZcJKsEDIcZP4rPdYvUzohVwySzTy6IuVwoPFXpfUuAMcyiMB5x6kP7ELpfBYKi4RefsODpOiqMddOQsI6Ar8oSER5itWAFqmPUpZMYiC4CYzK05TfGtzc"/>
+</div>
+<div class="flex flex-col justify-center">
+<h4 class="text-label-md font-bold text-on-surface group-hover:text-primary transition-colors">The Dark Knight...</h4>
+<p class="text-[12px] text-on-surface-variant">Oct 24, 9:00 PM</p>
+<p class="text-[12px] text-primary">IMAX, Seat G08</p>
+</div>
+</div>
+</div>
+<button class="w-full py-3 rounded-full border border-primary text-primary font-bold hover:bg-primary hover:text-on-primary transition-all duration-300">
+                    View Ticket History
+                </button>
+</div>
+<div class="flex-1 rounded-2xl border border-dashed border-outline-variant/30 flex flex-col items-center justify-center p-8 text-center bg-surface-container-lowest/50">
+<span class="material-symbols-outlined text-outline-variant text-[48px] mb-4">confirmation_number</span>
+<p class="text-label-md font-medium text-on-surface-variant mb-4">Planning your next movie night?</p>
+<button class="bg-primary/10 text-primary px-6 py-2 rounded-full font-bold hover:bg-primary/20 transition-all">
+                    Book New Movie
+                </button>
+</div>
+</aside>
+</div>
+<!-- Mobile Bottom Nav -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 bg-surface-container border-t border-outline-variant/20 px-6 py-3 flex justify-between items-center z-50">
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="text-[10px] font-bold">Home</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">movie</span>
+<span class="text-[10px]">Movies</span>
+</button>
+<div class="relative -top-6 bg-primary w-14 h-14 rounded-full flex items-center justify-center shadow-[0px_8px_16px_rgba(232,180,0,0.4)]">
+<span class="material-symbols-outlined text-on-primary">add</span>
+</div>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">confirmation_number</span>
+<span class="text-[10px]">Tickets</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px]">Profile</span>
+</button>
+</nav>
+<script>
+        // Micro-interaction for filter pills
+        const pills = document.querySelectorAll('.flex-wrap button');
+        pills.forEach(pill => {
+            pill.addEventListener('click', () => {
+                pills.forEach(p => {
+                    p.classList.remove('bg-primary', 'text-on-primary', 'shadow-[0px_0px_12px_rgba(232,180,0,0.3)]');
+                    p.classList.add('border', 'border-outline-variant', 'text-on-surface-variant');
+                });
+                pill.classList.remove('border', 'border-outline-variant', 'text-on-surface-variant');
+                pill.classList.add('bg-primary', 'text-on-primary', 'shadow-[0px_0px_12px_rgba(232,180,0,0.3)]');
+            });
+        });
+
+        // Simple parallax effect on movie posters
+        document.querySelectorAll('.cinematic-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const img = card.querySelector('img');
+                const rect = card.getBoundingClientRect();
+                const x = (e.clientX - rect.left) / rect.width;
+                const y = (e.clientY - rect.top) / rect.height;
+                
+                img.style.transform = `scale(1.1) translate(${(x - 0.5) * 10}px, ${(y - 0.5) * 10}px)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                const img = card.querySelector('img');
+                img.style.transform = 'scale(1) translate(0, 0)';
+            });
+        });
+    </script>
+</body></html>

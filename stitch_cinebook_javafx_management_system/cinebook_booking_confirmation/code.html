@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Booking Confirmation | CineBook</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-bright": "#3a3939",
+                    "on-primary-container": "#5f4800",
+                    "tertiary-fixed-dim": "#bbc5eb",
+                    "outline-variant": "#4f4633",
+                    "tertiary-fixed": "#dae1ff",
+                    "on-secondary-container": "#b8b6d0",
+                    "on-error": "#690005",
+                    "on-primary": "#3e2e00",
+                    "primary-container": "#e8b400",
+                    "primary-fixed-dim": "#f4bf19",
+                    "on-tertiary-fixed": "#0f1a37",
+                    "on-tertiary-fixed-variant": "#3b4665",
+                    "on-secondary-fixed": "#1a1a2e",
+                    "surface-container-high": "#2a2a2a",
+                    "surface-container": "#201f1f",
+                    "secondary": "#c6c4df",
+                    "tertiary-container": "#b0badf",
+                    "surface-variant": "#353534",
+                    "on-secondary-fixed-variant": "#45455b",
+                    "surface-dim": "#131313",
+                    "surface-tint": "#f4bf19",
+                    "primary-fixed": "#ffdf96",
+                    "error-container": "#93000a",
+                    "secondary-fixed": "#e2e0fc",
+                    "secondary-fixed-dim": "#c6c4df",
+                    "on-primary-fixed": "#251a00",
+                    "inverse-primary": "#765a00",
+                    "on-surface": "#e5e2e1",
+                    "tertiary": "#cbd6fc",
+                    "on-error-container": "#ffdad6",
+                    "inverse-on-surface": "#313030",
+                    "on-background": "#e5e2e1",
+                    "surface": "#131313",
+                    "secondary-container": "#47475d",
+                    "surface-container-highest": "#353534",
+                    "surface-container-low": "#1c1b1b",
+                    "on-primary-fixed-variant": "#594400",
+                    "outline": "#9b8f79",
+                    "on-tertiary": "#252f4d",
+                    "background": "#131313",
+                    "inverse-surface": "#e5e2e1",
+                    "surface-container-lowest": "#0e0e0e",
+                    "on-surface-variant": "#d2c5ac",
+                    "on-secondary": "#2f2e43",
+                    "primary": "#ffd15c",
+                    "on-tertiary-container": "#3f4a69",
+                    "error": "#ffb4ab"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "container-max-width": "1280px",
+                    "base": "8px",
+                    "margin-mobile": "16px",
+                    "margin-desktop": "48px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-xl": ["Inter"],
+                    "label-md": ["Inter"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #0D0D0D;
+            color: #e5e2e1;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .cinematic-glow {
+            box-shadow: 0px 0px 12px rgba(232, 180, 0, 0.2);
+        }
+        .ticket-shape {
+            mask-image: radial-gradient(circle at 0 50%, transparent 10px, black 10px),
+                        radial-gradient(circle at 100% 50%, transparent 10px, black 10px);
+            mask-composite: intersect;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col font-body-md overflow-x-hidden">
+<!-- Top AppBar -->
+<header class="bg-surface-container border-b border-outline-variant fixed top-0 w-full z-50">
+<div class="flex justify-between items-center w-full px-margin-desktop py-4 max-w-container-max-width mx-auto">
+<div class="flex items-center gap-8">
+<span class="text-headline-md font-headline-md font-bold text-primary tracking-tight">CineBook</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex items-center gap-8">
+<a class="text-on-surface-variant font-medium hover:bg-surface-bright transition-colors duration-200 px-3 py-1 rounded" href="#">Movies</a>
+<a class="text-on-surface-variant font-medium hover:bg-surface-bright transition-colors duration-200 px-3 py-1 rounded" href="#">Theaters</a>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary cursor-pointer" data-icon="notifications">notifications</span>
+<div class="w-10 h-10 rounded-full bg-surface-variant overflow-hidden border border-outline">
+<img alt="User Avatar" data-alt="A professional headshot of a young adult male with a friendly expression, set against a dark, cinematic background with soft lighting. The visual style is polished and high-end, mirroring a premium digital interface aesthetic with subtle amber light reflections on the skin." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDG-Wa07jni7zk9EzMjIP30xyCJ3dAxoVXgmMtvGML7A2KNUp-Wm8Fmx8Ow75ktOfvKDPHGUVYIll2ksa8wFeZgn-9KbiInpPkIHgkBfKTZMnIke4WgDOeiWkUALEEG4_l1_9mqttyQ4up1pdFaaX6lYgQ4tHEs-IgbJpKbBHlvcCbIeyvSb6LBxNoYQZlhzXbm_VPksrtX07LR2VFoqMlfR-zwQJSQ2mSMTqVHoD0kOwl57JLfCFP5HeRWmMNNPo_GNxrYemJ-bIY"/>
+</div>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-grow flex items-center justify-center pt-24 pb-12 px-margin-mobile md:px-0">
+<!-- Main Confirmation Card -->
+<div class="w-full max-w-[700px] bg-[#16213E] rounded-xl border border-slate-700/50 flex flex-col relative overflow-hidden transition-all duration-500" id="booking-card">
+<!-- Poster Backdrop Accent -->
+<div class="h-32 w-full relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-t from-[#16213E] to-transparent z-10"></div>
+<img class="w-full h-full object-cover opacity-40 blur-sm" data-alt="A wide cinematic landscape shot of a futuristic city with swirling atmospheric clouds, echoing the dream-state visual themes of the movie Inception. The lighting is dramatic and low-key, dominated by deep blues and punctuated by warm amber light sources from high-rise buildings, maintaining a premium theater lobby atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpaYV7PVut-c1eVx9z87f37lsU2KU3Ugz5ggocYby5IgWtV5K-YG6LSMtjByKR7i__ihUXm8Cxm3V_aiEayQyeiKmRPypF5CknLneF43JfpSEEKg-Gkd7sWyB-IQ-dJjvYzjcPZU5tz7DReZy2Z3apls47KqeXGCQGL5ksnb_p5Nredmq9dWvygup26ZpNmPOM65wvMSCJ0-kzoGpnz_iAiD2rgzhsROi8_WhKAW7eFpPIjYdMj49EVzHsfYKAw7y3GI37xHIvzeU"/>
+</div>
+<!-- Content Container -->
+<div class="p-8 md:p-12 -mt-16 relative z-20">
+<div class="flex flex-col md:flex-row justify-between items-start gap-6 mb-8">
+<div>
+<span class="text-primary font-label-md text-label-md uppercase tracking-widest mb-2 block">Confirm Your Order</span>
+<h1 class="text-headline-lg font-headline-lg text-on-surface">Inception 2</h1>
+<p class="text-on-surface-variant font-body-md mt-1">IMAX Cinematic Experience</p>
+</div>
+<div class="bg-surface-container-low px-4 py-2 rounded-lg border border-outline-variant flex flex-col items-center">
+<span class="text-on-surface-variant font-label-sm text-label-sm">TOTAL AMOUNT</span>
+<span class="text-primary font-headline-md text-headline-md">PKR 1,848</span>
+</div>
+</div>
+<!-- Section 1: Summary -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 p-6 bg-surface-container-lowest/50 rounded-xl border border-outline-variant/30 mb-8">
+<div class="flex flex-col">
+<span class="text-on-surface-variant font-label-sm text-label-sm uppercase">Hall</span>
+<span class="text-on-surface font-body-md font-bold">Hall A</span>
+</div>
+<div class="flex flex-col">
+<span class="text-on-surface-variant font-label-sm text-label-sm uppercase">Seats</span>
+<span class="text-on-surface font-body-md font-bold">D5, D6</span>
+</div>
+<div class="flex flex-col">
+<span class="text-on-surface-variant font-label-sm text-label-sm uppercase">Class</span>
+<span class="text-on-surface font-body-md font-bold">Standard</span>
+</div>
+<div class="flex flex-col">
+<span class="text-on-surface-variant font-label-sm text-label-sm uppercase">Date</span>
+<span class="text-on-surface font-body-md font-bold">May 20, 2026</span>
+</div>
+</div>
+<!-- Section 2: Price Details -->
+<div class="space-y-3 mb-8 border-b border-outline-variant/30 pb-6">
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant">Standard Seat (x2)</span>
+<span class="text-on-surface">PKR 1,600</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant">Internet Handling Fee</span>
+<span class="text-on-surface">PKR 180</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant">Sales Tax (4%)</span>
+<span class="text-on-surface">PKR 68</span>
+</div>
+</div>
+<!-- Section 3: Payment Ref -->
+<div class="mb-10">
+<label class="block text-on-surface-variant font-label-md text-label-md mb-2">PAYMENT REFERENCE / VOUCHER</label>
+<div class="relative">
+<input class="w-full bg-[#16213E] border border-[#8892A4]/20 rounded-lg px-4 py-4 text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/30 transition-all placeholder:text-on-surface-variant/50" placeholder="Enter transaction ID or promo code" type="text"/>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant" data-icon="payments">payments</span>
+</div>
+<p class="text-label-sm font-label-sm text-on-surface-variant mt-2 italic">Ensure your reference matches your mobile wallet receipt.</p>
+</div>
+<!-- Section 4: Actions -->
+<div class="flex flex-col gap-4">
+<button class="w-full bg-primary text-on-primary-container font-label-md text-label-md py-4 rounded-full font-bold uppercase tracking-widest hover:brightness-110 cinematic-glow transition-all active:scale-95" onclick="showSuccess()">
+                        Confirm Booking
+                    </button>
+<button class="w-full bg-transparent border border-primary text-primary font-label-md text-label-md py-4 rounded-full font-bold uppercase tracking-widest hover:bg-primary/10 transition-all active:scale-95">
+                        Go Back
+                    </button>
+</div>
+</div>
+</div>
+<!-- Success Overlay (Hidden by default) -->
+<div class="fixed inset-0 z-[100] flex items-center justify-center bg-background/95 hidden px-margin-mobile" id="success-overlay">
+<div class="w-full max-w-[500px] bg-surface-container rounded-2xl p-10 text-center border border-primary/20 relative overflow-hidden">
+<!-- Background Pulse -->
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-48 h-48 bg-primary/10 blur-[80px] rounded-full"></div>
+<div class="mb-6 relative">
+<div class="w-20 h-20 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4 border border-primary/40">
+<span class="material-symbols-outlined text-primary text-5xl" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<h2 class="text-headline-lg font-headline-lg text-on-surface">Booking Confirmed!</h2>
+<p class="text-on-surface-variant mt-2 font-body-md">Your seats are locked and ready for the show.</p>
+</div>
+<div class="bg-surface-container-low border border-outline-variant p-6 rounded-xl mb-8 flex flex-col gap-3">
+<div class="flex justify-between items-center border-b border-outline-variant/30 pb-3">
+<span class="text-on-surface-variant text-label-md font-label-md">BOOKING ID</span>
+<span class="text-primary font-bold">#CB-20260520-0042</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant text-label-md font-label-md">TICKET SENT TO</span>
+<span class="text-on-surface font-medium">user@cinebook.com</span>
+</div>
+</div>
+<div class="space-y-4">
+<button class="w-full bg-primary text-on-primary-container font-label-md text-label-md py-4 rounded-full font-bold uppercase tracking-widest cinematic-glow hover:brightness-110 transition-all">
+                        View My Bookings
+                    </button>
+<button class="text-on-surface-variant font-label-md text-label-md hover:text-on-surface transition-colors uppercase tracking-widest" onclick="closeSuccess()">
+                        Return to Home
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- Side Navigation Bar (Desktop Only Anchor) -->
+<aside class="hidden lg:flex fixed left-0 top-0 h-screen w-64 bg-surface-container-low border-r border-outline-variant flex-col p-4 gap-2 z-40 pt-24">
+<div class="mb-8 px-4">
+<span class="text-label-md font-label-md text-on-surface-variant block uppercase tracking-widest mb-4">Main Menu</span>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 text-on-surface-variant hover:text-on-surface px-4 py-3 hover:bg-surface-variant rounded-full transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="text-label-md font-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:text-on-surface px-4 py-3 hover:bg-surface-variant rounded-full transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="movie">movie</span>
+<span class="text-label-md font-label-md">Movies</span>
+</a>
+<div class="flex items-center gap-3 bg-secondary-container text-on-secondary-container rounded-full px-4 py-3 shadow-[0px_0px_12px_rgba(232,180,0,0.2)] scale-[0.98]">
+<span class="material-symbols-outlined" data-icon="confirmation_number">confirmation_number</span>
+<span class="text-label-md font-label-md">Bookings</span>
+</div>
+<a class="flex items-center gap-3 text-on-surface-variant hover:text-on-surface px-4 py-3 hover:bg-surface-variant rounded-full transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="text-label-md font-label-md">Statistics</span>
+</a>
+</nav>
+</div>
+<div class="mt-auto px-4 pb-4 border-t border-outline-variant pt-6">
+<button class="w-full bg-primary-container text-on-primary-container font-label-md text-label-md py-3 rounded-full font-bold mb-4 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+                Book New
+            </button>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 text-on-surface-variant hover:text-on-surface px-4 py-3 hover:bg-surface-variant rounded-full transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="text-label-md font-label-md">Settings</span>
+</a>
+</nav>
+</div>
+</aside>
+<script>
+        function showSuccess() {
+            const overlay = document.getElementById('success-overlay');
+            overlay.classList.remove('hidden');
+            overlay.classList.add('flex');
+            
+            // Interaction: Pulse effect on ID
+            const bookingId = overlay.querySelector('.text-primary.font-bold');
+            bookingId.animate([
+                { opacity: 0, scale: 0.9 },
+                { opacity: 1, scale: 1 }
+            ], {
+                duration: 400,
+                easing: 'ease-out'
+            });
+        }
+
+        function closeSuccess() {
+            const overlay = document.getElementById('success-overlay');
+            overlay.classList.add('hidden');
+            overlay.classList.remove('flex');
+        }
+
+        // Atmospheric micro-interaction for buttons
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('mouseenter', () => {
+                if(btn.classList.contains('bg-primary')) {
+                    btn.style.boxShadow = "0px 0px 20px rgba(232, 180, 0, 0.4)";
+                }
+            });
+            btn.addEventListener('mouseleave', () => {
+                if(btn.classList.contains('bg-primary')) {
+                    btn.style.boxShadow = "0px 0px 12px rgba(232, 180, 0, 0.2)";
+                }
+            });
+        });
+    </script>
+</body></html>

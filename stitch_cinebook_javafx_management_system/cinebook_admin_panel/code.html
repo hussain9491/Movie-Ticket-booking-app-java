@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #0D0D0D;
+            color: #e5e2e1;
+            font-family: 'Inter', sans-serif;
+        }
+        .amber-glow {
+            box-shadow: 0px 0px 12px rgba(232, 180, 0, 0.2);
+        }
+        .amber-glow-hover:hover {
+            box-shadow: 0px 0px 18px rgba(232, 180, 0, 0.35);
+        }
+        /* Custom scrollbar for cinematic feel */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #131313; }
+        ::-webkit-scrollbar-thumb { background: #353534; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #4f4633; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-bright": "#3a3939",
+                      "on-primary-container": "#5f4800",
+                      "tertiary-fixed-dim": "#bbc5eb",
+                      "outline-variant": "#4f4633",
+                      "tertiary-fixed": "#dae1ff",
+                      "on-secondary-container": "#b8b6d0",
+                      "on-error": "#690005",
+                      "on-primary": "#3e2e00",
+                      "primary-container": "#e8b400",
+                      "primary-fixed-dim": "#f4bf19",
+                      "on-tertiary-fixed": "#0f1a37",
+                      "on-tertiary-fixed-variant": "#3b4665",
+                      "on-secondary-fixed": "#1a1a2e",
+                      "surface-container-high": "#2a2a2a",
+                      "surface-container": "#201f1f",
+                      "secondary": "#c6c4df",
+                      "tertiary-container": "#b0badf",
+                      "surface-variant": "#353534",
+                      "on-secondary-fixed-variant": "#45455b",
+                      "surface-dim": "#131313",
+                      "surface-tint": "#f4bf19",
+                      "primary-fixed": "#ffdf96",
+                      "error-container": "#93000a",
+                      "secondary-fixed": "#e2e0fc",
+                      "secondary-fixed-dim": "#c6c4df",
+                      "on-primary-fixed": "#251a00",
+                      "inverse-primary": "#765a00",
+                      "on-surface": "#e5e2e1",
+                      "tertiary": "#cbd6fc",
+                      "on-error-container": "#ffdad6",
+                      "inverse-on-surface": "#313030",
+                      "on-background": "#e5e2e1",
+                      "surface": "#131313",
+                      "secondary-container": "#47475d",
+                      "surface-container-highest": "#353534",
+                      "surface-container-low": "#1c1b1b",
+                      "on-primary-fixed-variant": "#594400",
+                      "outline": "#9b8f79",
+                      "on-tertiary": "#252f4d",
+                      "background": "#131313",
+                      "inverse-surface": "#e5e2e1",
+                      "surface-container-lowest": "#0e0e0e",
+                      "on-surface-variant": "#d2c5ac",
+                      "on-secondary": "#2f2e43",
+                      "primary": "#ffd15c",
+                      "on-tertiary-container": "#3f4a69",
+                      "error": "#ffb4ab"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter": "24px",
+                      "container-max-width": "1280px",
+                      "base": "8px",
+                      "margin-mobile": "16px",
+                      "margin-desktop": "48px"
+              },
+              "fontFamily": {
+                      "label-sm": ["Inter"],
+                      "body-md": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "headline-lg-mobile": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "headline-xl": ["Inter"],
+                      "label-md": ["Inter"]
+              },
+              "fontSize": {
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+      </script>
+</head>
+<body class="overflow-hidden">
+<div class="flex h-screen w-full">
+<!-- Sidebar Navigation -->
+<aside class="hidden md:flex flex-col h-screen w-64 bg-surface-container-low border-r border-outline-variant p-4 gap-2">
+<div class="flex items-center gap-3 px-4 py-6 mb-4">
+<div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-on-primary font-bold text-headline-md">
+                    AD
+                </div>
+<div>
+<h1 class="text-headline-md font-headline-md font-bold text-primary tracking-tight">CineBook</h1>
+<p class="text-label-sm font-label-sm text-on-surface-variant opacity-70">Premium Ticketing</p>
+</div>
+</div>
+<nav class="flex-1 flex flex-col gap-2">
+<a class="flex items-center gap-3 bg-secondary-container text-on-secondary-container rounded-full px-4 py-3 shadow-[0px_0px_12px_rgba(232,180,0,0.2)] transition-transform duration-150 scale-[0.98]" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="text-label-md font-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-variant px-4 py-3 rounded-full transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="movie">movie</span>
+<span class="text-label-md font-label-md">Manage Movies</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-variant px-4 py-3 rounded-full transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="text-label-md font-label-md">Manage Users</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-variant px-4 py-3 rounded-full transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="text-label-md font-label-md">Reports</span>
+</a>
+<a class="mt-auto flex items-center gap-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-variant px-4 py-3 rounded-full transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="text-label-md font-label-md">Settings</span>
+</a>
+</nav>
+<button class="mt-4 bg-primary text-on-primary font-bold py-3 px-4 rounded-full flex items-center justify-center gap-2 amber-glow amber-glow-hover transition-all active:scale-95">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+<span class="text-label-md font-label-md">Book New Movie</span>
+</button>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col h-screen overflow-y-auto">
+<!-- Top App Bar -->
+<header class="flex justify-between items-center w-full px-8 py-4 bg-surface-container border-b border-outline-variant sticky top-0 z-10">
+<div class="flex items-center gap-4">
+<h2 class="text-headline-md font-headline-md font-bold text-primary">Dashboard Overview</h2>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant" data-icon="search">search</span>
+<input class="bg-[#16213E] border border-outline-variant/20 rounded-full py-2 pl-10 pr-4 text-on-surface focus:outline-none focus:ring-1 focus:ring-primary w-64 text-label-md" placeholder="Search data..." type="text"/>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-primary hover:bg-surface-bright p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="text-primary hover:bg-surface-bright p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Dashboard Body -->
+<div class="p-8 space-y-8 max-w-[1400px]">
+<!-- Stat Cards Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Card 1 -->
+<div class="bg-[#16213E] border border-outline-variant/30 p-6 rounded-xl relative overflow-hidden group">
+<div class="absolute -right-4 -bottom-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-[80px]" data-icon="movie">movie</span>
+</div>
+<p class="text-label-md font-label-md text-on-surface-variant mb-2">Total Movies</p>
+<h3 class="text-headline-lg font-headline-lg text-primary">24</h3>
+<div class="mt-4 flex items-center gap-1 text-[#4ADE80] text-label-sm">
+<span class="material-symbols-outlined text-[16px]" data-icon="trending_up">trending_up</span>
+<span>+2 this month</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-[#16213E] border border-outline-variant/30 p-6 rounded-xl relative overflow-hidden group">
+<div class="absolute -right-4 -bottom-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-[80px]" data-icon="group">group</span>
+</div>
+<p class="text-label-md font-label-md text-on-surface-variant mb-2">Total Users</p>
+<h3 class="text-headline-lg font-headline-lg text-primary">187</h3>
+<div class="mt-4 flex items-center gap-1 text-[#4ADE80] text-label-sm">
+<span class="material-symbols-outlined text-[16px]" data-icon="trending_up">trending_up</span>
+<span>+12% vs last week</span>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-[#16213E] border border-outline-variant/30 p-6 rounded-xl relative overflow-hidden group">
+<div class="absolute -right-4 -bottom-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-[80px]" data-icon="confirmation_number">confirmation_number</span>
+</div>
+<p class="text-label-md font-label-md text-on-surface-variant mb-2">Today's Bookings</p>
+<h3 class="text-headline-lg font-headline-lg text-primary">43</h3>
+<div class="mt-4 flex items-center gap-1 text-on-surface-variant text-label-sm">
+<span class="material-symbols-outlined text-[16px]" data-icon="update">update</span>
+<span>Updated 5m ago</span>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="bg-[#16213E] border border-outline-variant/30 p-6 rounded-xl relative overflow-hidden group">
+<div class="absolute -right-4 -bottom-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-[80px]" data-icon="payments">payments</span>
+</div>
+<p class="text-label-md font-label-md text-on-surface-variant mb-2">Today's Revenue</p>
+<h3 class="text-headline-lg font-headline-lg text-primary">PKR 36,550</h3>
+<div class="mt-4 flex items-center gap-1 text-on-surface-variant text-label-sm">
+<span class="material-symbols-outlined text-[16px]" data-icon="auto_graph">auto_graph</span>
+<span>High peak session</span>
+</div>
+</div>
+</div>
+<!-- Main Grid Layout (60/40) -->
+<div class="grid grid-cols-1 lg:grid-cols-10 gap-8">
+<!-- Left Panel: Recent Bookings -->
+<div class="lg:col-span-6 bg-surface-container rounded-xl border border-outline-variant/20 overflow-hidden">
+<div class="p-6 border-b border-outline-variant/20 flex justify-between items-center">
+<h4 class="text-headline-md font-headline-md font-bold text-on-surface">Recent Bookings</h4>
+<button class="text-primary text-label-md font-label-md hover:underline">View All</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-surface-container-high">
+<tr>
+<th class="px-6 py-4 text-label-md font-label-md text-on-surface-variant uppercase tracking-wider">Movie</th>
+<th class="px-6 py-4 text-label-md font-label-md text-on-surface-variant uppercase tracking-wider">User</th>
+<th class="px-6 py-4 text-label-md font-label-md text-on-surface-variant uppercase tracking-wider">Hall</th>
+<th class="px-6 py-4 text-label-md font-label-md text-on-surface-variant uppercase tracking-wider">Amount</th>
+<th class="px-6 py-4 text-label-md font-label-md text-on-surface-variant uppercase tracking-wider">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10">
+<tr class="hover:bg-surface-variant/30 transition-colors">
+<td class="px-6 py-4 font-medium text-on-surface">Interstellar</td>
+<td class="px-6 py-4 text-on-surface-variant">Ahmed R.</td>
+<td class="px-6 py-4 text-on-surface-variant">Hall A</td>
+<td class="px-6 py-4 text-on-surface">PKR 1,200</td>
+<td class="px-6 py-4">
+<span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-label-sm">Confirmed</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-variant/30 transition-colors">
+<td class="px-6 py-4 font-medium text-on-surface">The Batman</td>
+<td class="px-6 py-4 text-on-surface-variant">Sara K.</td>
+<td class="px-6 py-4 text-on-surface-variant">Hall C</td>
+<td class="px-6 py-4 text-on-surface">PKR 950</td>
+<td class="px-6 py-4">
+<span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-label-sm">Confirmed</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-variant/30 transition-colors">
+<td class="px-6 py-4 font-medium text-on-surface">Dune: Part Two</td>
+<td class="px-6 py-4 text-on-surface-variant">Zain Malik</td>
+<td class="px-6 py-4 text-on-surface-variant">Hall B</td>
+<td class="px-6 py-4 text-on-surface">PKR 1,500</td>
+<td class="px-6 py-4">
+<span class="bg-surface-variant text-on-surface-variant px-3 py-1 rounded-full text-label-sm">Pending</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-variant/30 transition-colors">
+<td class="px-6 py-4 font-medium text-on-surface">Oppenheimer</td>
+<td class="px-6 py-4 text-on-surface-variant">Hamza F.</td>
+<td class="px-6 py-4 text-on-surface-variant">Hall A</td>
+<td class="px-6 py-4 text-on-surface">PKR 1,200</td>
+<td class="px-6 py-4">
+<span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-label-sm">Confirmed</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-variant/30 transition-colors">
+<td class="px-6 py-4 font-medium text-on-surface">Inception</td>
+<td class="px-6 py-4 text-on-surface-variant">Ali Khan</td>
+<td class="px-6 py-4 text-on-surface-variant">Hall C</td>
+<td class="px-6 py-4 text-on-surface">PKR 1,100</td>
+<td class="px-6 py-4">
+<span class="bg-error/20 text-error px-3 py-1 rounded-full text-label-sm">Cancelled</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Right Panel: Add New Movie Form -->
+<div class="lg:col-span-4 bg-[#16213E] rounded-xl border border-outline-variant/30 p-8">
+<div class="mb-8">
+<h4 class="text-headline-md font-headline-md font-bold text-on-surface">Add New Movie</h4>
+<p class="text-label-md text-on-surface-variant">Fill details to list on ticketing site.</p>
+</div>
+<form class="space-y-5">
+<div>
+<label class="block text-label-md text-on-surface-variant mb-2">Movie Title</label>
+<input class="w-full bg-[#0D0D0D] border border-outline-variant/20 rounded-lg p-3 text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" placeholder="e.g. Inception" type="text"/>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="block text-label-md text-on-surface-variant mb-2">Genre</label>
+<select class="w-full bg-[#0D0D0D] border border-outline-variant/20 rounded-lg p-3 text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none">
+<option>Action</option>
+<option>Sci-Fi</option>
+<option>Drama</option>
+<option>Thriller</option>
+</select>
+</div>
+<div>
+<label class="block text-label-md text-on-surface-variant mb-2">Price (PKR)</label>
+<input class="w-full bg-[#0D0D0D] border border-outline-variant/20 rounded-lg p-3 text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none" placeholder="1200" type="number"/>
+</div>
+</div>
+<div>
+<label class="block text-label-md text-on-surface-variant mb-2">Date &amp; Time</label>
+<input class="w-full bg-[#0D0D0D] border border-outline-variant/20 rounded-lg p-3 text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none" type="datetime-local"/>
+</div>
+<div>
+<label class="block text-label-md text-on-surface-variant mb-2">Poster URL / Path</label>
+<input class="w-full bg-[#0D0D0D] border border-outline-variant/20 rounded-lg p-3 text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none" placeholder="images/posters/inception.jpg" type="text"/>
+</div>
+<button class="w-full bg-primary text-on-primary font-bold py-4 rounded-full mt-4 amber-glow amber-glow-hover transition-all active:scale-[0.98]" type="submit">
+                                Add Movie to Catalog
+                            </button>
+</form>
+</div>
+</div>
+<!-- Bottom Stats Bar -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 bg-surface-container-low border-t border-outline-variant/30 p-6 rounded-t-2xl">
+<div class="flex items-center gap-4">
+<div class="p-3 bg-primary/10 rounded-lg">
+<span class="material-symbols-outlined text-primary" data-icon="star">star</span>
+</div>
+<div>
+<p class="text-label-sm font-label-sm text-on-surface-variant uppercase">Top Performing Movie</p>
+<p class="text-body-md font-bold text-on-surface">Dune: Part Two</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="p-3 bg-secondary-container/50 rounded-lg">
+<span class="material-symbols-outlined text-on-secondary-container" data-icon="person_check">person_check</span>
+</div>
+<div>
+<p class="text-label-sm font-label-sm text-on-surface-variant uppercase">Most Active User</p>
+<p class="text-body-md font-bold text-on-surface">Ahmed Raza (24 Bookings)</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="p-3 bg-tertiary-container/30 rounded-lg">
+<span class="material-symbols-outlined text-tertiary" data-icon="event_seat">event_seat</span>
+</div>
+<div class="flex-1">
+<p class="text-label-sm font-label-sm text-on-surface-variant uppercase">Hall Occupancy (Now)</p>
+<div class="w-full bg-[#0D0D0D] h-2 rounded-full mt-1 overflow-hidden">
+<div class="bg-primary h-full w-[78%]"></div>
+</div>
+<p class="text-label-sm text-on-surface mt-1">78% - Peaks expected at 8PM</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Mobile Bottom Nav -->
+<div class="md:hidden fixed bottom-0 left-0 right-0 bg-surface-container-low border-t border-outline-variant/30 flex justify-around p-4 z-50">
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="text-[10px] font-medium">Home</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="movie">movie</span>
+<span class="text-[10px] font-medium">Movies</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+<span class="text-[10px] font-medium">New</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="text-[10px] font-medium">Stats</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="text-[10px] font-medium">Settings</span>
+</button>
+</div>
+<script>
+        // Simple Interaction logic
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const btn = e.target.querySelector('button[type="submit"]');
+                const originalText = btn.innerHTML;
+                btn.innerHTML = 'Processing...';
+                btn.classList.add('opacity-80', 'scale-95');
+                
+                setTimeout(() => {
+                    btn.innerHTML = '<span class="material-symbols-outlined" style="font-variation-settings: \'FILL\' 1;">check_circle</span> Movie Added!';
+                    btn.classList.remove('bg-primary');
+                    btn.classList.add('bg-green-600');
+                    setTimeout(() => {
+                        btn.innerHTML = originalText;
+                        btn.classList.remove('bg-green-600', 'opacity-80', 'scale-95');
+                        btn.classList.add('bg-primary');
+                        form.reset();
+                    }, 2000);
+                }, 1500);
+            });
+        });
+    </script>
+</body></html>

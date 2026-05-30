@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0d0d0d;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .cinema-curtain-gradient {
+            background: linear-gradient(90deg, rgba(13, 13, 13, 1) 0%, rgba(26, 26, 46, 0.4) 100%);
+        }
+        .glass-card {
+            background: #16213e;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+            border: 1px solid rgba(136, 146, 164, 0.2);
+        }
+        .amber-glow:focus-within {
+            box-shadow: 0px 0px 12px rgba(232, 180, 0, 0.2);
+            border-color: #ffd15c;
+        }
+        .loader {
+            border: 2px solid #3e2e00;
+            border-top: 2px solid #ffd15c;
+            border-radius: 50%;
+            width: 16px;
+            height: 16px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-bright": "#3a3939",
+                      "on-primary-container": "#5f4800",
+                      "tertiary-fixed-dim": "#bbc5eb",
+                      "outline-variant": "#4f4633",
+                      "tertiary-fixed": "#dae1ff",
+                      "on-secondary-container": "#b8b6d0",
+                      "on-error": "#690005",
+                      "on-primary": "#3e2e00",
+                      "primary-container": "#e8b400",
+                      "primary-fixed-dim": "#f4bf19",
+                      "on-tertiary-fixed": "#0f1a37",
+                      "on-tertiary-fixed-variant": "#3b4665",
+                      "on-secondary-fixed": "#1a1a2e",
+                      "surface-container-high": "#2a2a2a",
+                      "surface-container": "#201f1f",
+                      "secondary": "#c6c4df",
+                      "tertiary-container": "#b0badf",
+                      "surface-variant": "#353534",
+                      "on-secondary-fixed-variant": "#45455b",
+                      "surface-dim": "#131313",
+                      "surface-tint": "#f4bf19",
+                      "primary-fixed": "#ffdf96",
+                      "error-container": "#93000a",
+                      "secondary-fixed": "#e2e0fc",
+                      "secondary-fixed-dim": "#c6c4df",
+                      "on-primary-fixed": "#251a00",
+                      "inverse-primary": "#765a00",
+                      "on-surface": "#e5e2e1",
+                      "tertiary": "#cbd6fc",
+                      "on-error-container": "#ffdad6",
+                      "inverse-on-surface": "#313030",
+                      "on-background": "#e5e2e1",
+                      "surface": "#131313",
+                      "secondary-container": "#47475d",
+                      "surface-container-highest": "#353534",
+                      "surface-container-low": "#1c1b1b",
+                      "on-primary-fixed-variant": "#594400",
+                      "outline": "#9b8f79",
+                      "on-tertiary": "#252f4d",
+                      "background": "#131313",
+                      "inverse-surface": "#e5e2e1",
+                      "surface-container-lowest": "#0e0e0e",
+                      "on-surface-variant": "#d2c5ac",
+                      "on-secondary": "#2f2e43",
+                      "primary": "#ffd15c",
+                      "on-tertiary-container": "#3f4a69",
+                      "error": "#ffb4ab"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter": "24px",
+                      "container-max-width": "1280px",
+                      "base": "8px",
+                      "margin-mobile": "16px",
+                      "margin-desktop": "48px"
+              },
+              "fontFamily": {
+                      "label-sm": ["Inter"],
+                      "body-md": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "headline-xl": ["Inter"],
+                      "label-md": ["Inter"]
+              },
+              "fontSize": {
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background min-h-screen flex items-center justify-center overflow-hidden">
+<!-- Cinematic Background Suggestion -->
+<div class="fixed inset-0 z-0 flex">
+<div class="w-1/2 h-full relative opacity-40">
+<img alt="Cinematic Background" class="absolute inset-0 w-full h-full object-cover" data-alt="A dramatic cinematic scene of a grand theater with deep red velvet curtains partially drawn, revealing a soft, atmospheric light from the screen. The lighting is moody and high-contrast, featuring a dark-mode-first aesthetic with deep blacks and rich shadows. Soft golden highlights catch the texture of the fabric, perfectly aligning with a premium, luxurious movie booking interface style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCs6AQxfLOFwLzXbs9T9nA1yVAEgS1DXkdaNQMn1NlPwb4oOlhdpU6SKPYYUCGkF5dWCM3fnheyp9uBFd3BIAs4vywJOhoqQ2AlbqJrSeBTw676_we6V37Y4WrvCULgmDtSgY_-_4tcT4qhhhJkm0qiwdSYlzGi7P-CEvWfWJ_01OJ9egURpZJ3bmD5_cNCMsCIlxN6NjYpPIlkgwwX9gkLFdo_Okz_SvzPxYaZFaTZtpscP5KUiE4trNWY9s5esOxOlY2qwBUOnds"/>
+<div class="absolute inset-0 cinema-curtain-gradient"></div>
+</div>
+<div class="w-1/2 h-full bg-background"></div>
+</div>
+<!-- Main Container -->
+<main class="relative z-10 w-full flex items-center justify-center p-margin-mobile md:p-0">
+<!-- Login Card -->
+<div class="glass-card w-full max-w-[400px] p-8 rounded-xl transition-all duration-300" id="login-card">
+<!-- Logo Section -->
+<div class="flex flex-col items-center mb-8">
+<h1 class="text-headline-lg font-headline-lg text-primary tracking-tight">CineBook</h1>
+<p class="text-label-md font-label-md text-on-surface-variant mt-1">Your seat is waiting</p>
+</div>
+<!-- Login Form -->
+<form class="space-y-6" id="login-form" onsubmit="return handleLogin(event)">
+<!-- State Annotation: Error Message (Hidden by default) -->
+<div class="hidden bg-error-container/20 border border-error/30 p-3 rounded-lg flex items-center gap-3" id="error-message">
+<span class="material-symbols-outlined text-error text-[20px]" data-icon="error">error</span>
+<p class="text-label-sm font-label-sm text-error">Incorrect username or password</p>
+</div>
+<!-- Username Input -->
+<div class="space-y-2">
+<label class="text-label-md font-label-md text-on-surface-variant block ml-1">Username</label>
+<div class="relative amber-glow rounded-full border border-outline/20 bg-[#16213E] transition-all">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant" data-icon="person">person</span>
+<input class="w-full bg-transparent border-none focus:ring-0 py-3 pl-12 pr-4 text-body-md font-body-md text-on-surface placeholder:text-on-surface-variant/50" id="username" placeholder="Enter your username" type="text"/>
+</div>
+</div>
+<!-- Password Input -->
+<div class="space-y-2">
+<label class="text-label-md font-label-md text-on-surface-variant block ml-1">Password</label>
+<div class="relative amber-glow rounded-full border border-outline/20 bg-[#16213E] transition-all">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant" data-icon="lock">lock</span>
+<input class="w-full bg-transparent border-none focus:ring-0 py-3 pl-12 pr-12 text-body-md font-body-md text-on-surface placeholder:text-on-surface-variant/50" id="password" placeholder="••••••••" type="password"/>
+<button class="absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-primary transition-colors" onclick="togglePassword()" type="button">
+<span class="material-symbols-outlined" data-icon="visibility" id="password-toggle-icon">visibility</span>
+</button>
+</div>
+</div>
+<!-- Role Dropdown -->
+<div class="space-y-2">
+<label class="text-label-md font-label-md text-on-surface-variant block ml-1">Role</label>
+<div class="relative amber-glow rounded-full border border-outline/20 bg-[#16213E] transition-all">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant" data-icon="badge">badge</span>
+<select class="w-full bg-transparent border-none focus:ring-0 py-3 pl-12 pr-10 text-body-md font-body-md text-on-surface appearance-none cursor-pointer">
+<option class="bg-[#16213E]">User</option>
+<option class="bg-[#16213E]">Admin</option>
+</select>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+<!-- Actions -->
+<div class="pt-2 space-y-4">
+<!-- Login Button / Loading State -->
+<button class="w-full bg-primary text-on-primary py-3 rounded-full font-label-md text-label-md flex items-center justify-center gap-2 hover:shadow-[0px_0px_16px_rgba(232,180,0,0.4)] transition-all active:scale-95" id="submit-btn" type="submit">
+<span id="btn-text">Login</span>
+<div class="hidden loader" id="loader"></div>
+</button>
+<div class="flex justify-center">
+<a class="text-label-sm font-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Forgot password?</a>
+</div>
+</div>
+</form>
+<!-- Register Section -->
+<div class="mt-8 pt-8 border-t border-outline-variant flex flex-col items-center gap-4">
+<p class="text-label-sm font-label-sm text-on-surface-variant">Don't have an account?</p>
+<button class="w-full border border-primary text-primary py-3 rounded-full font-label-md text-label-md hover:bg-primary/10 transition-all active:scale-95">
+                    Register
+                </button>
+</div>
+</div>
+</main>
+<!-- State Annotations Tooltip (For Presentation) -->
+<div class="fixed bottom-margin-desktop right-margin-desktop z-50">
+<div class="bg-surface-container-high p-4 rounded-xl shadow-xl border border-outline-variant max-w-[240px]">
+<h4 class="text-label-md font-label-md text-primary mb-2">Dev Sandbox: UI States</h4>
+<div class="flex flex-col gap-2">
+<button class="text-label-sm font-label-sm bg-surface-variant px-3 py-2 rounded-lg text-on-surface hover:bg-primary/20 transition-all text-left" onclick="simulateError()">Trigger Error State</button>
+<button class="text-label-sm font-label-sm bg-surface-variant px-3 py-2 rounded-lg text-on-surface hover:bg-primary/20 transition-all text-left" onclick="simulateLoading()">Trigger Loading State</button>
+<button class="text-label-sm font-label-sm bg-surface-variant px-3 py-2 rounded-lg text-on-surface hover:bg-primary/20 transition-all text-left" onclick="resetStates()">Reset to Empty</button>
+</div>
+</div>
+</div>
+<script>
+        function togglePassword() {
+            const pwd = document.getElementById('password');
+            const icon = document.getElementById('password-toggle-icon');
+            if (pwd.type === 'password') {
+                pwd.type = 'text';
+                icon.textContent = 'visibility_off';
+            } else {
+                pwd.type = 'password';
+                icon.textContent = 'visibility';
+            }
+        }
+
+        function handleLogin(e) {
+            e.preventDefault();
+            simulateLoading();
+            return false;
+        }
+
+        function simulateLoading() {
+            const btnText = document.getElementById('btn-text');
+            const loader = document.getElementById('loader');
+            const btn = document.getElementById('submit-btn');
+            const errorMsg = document.getElementById('error-message');
+
+            errorMsg.classList.add('hidden');
+            btnText.classList.add('hidden');
+            loader.classList.remove('hidden');
+            btn.disabled = true;
+
+            setTimeout(() => {
+                resetStates();
+                simulateError();
+            }, 2000);
+        }
+
+        function simulateError() {
+            const errorMsg = document.getElementById('error-message');
+            errorMsg.classList.remove('hidden');
+            errorMsg.classList.add('animate-bounce');
+            setTimeout(() => errorMsg.classList.remove('animate-bounce'), 1000);
+        }
+
+        function resetStates() {
+            const btnText = document.getElementById('btn-text');
+            const loader = document.getElementById('loader');
+            const btn = document.getElementById('submit-btn');
+            const errorMsg = document.getElementById('error-message');
+            const username = document.getElementById('username');
+            const password = document.getElementById('password');
+
+            btnText.classList.remove('hidden');
+            loader.classList.add('hidden');
+            btn.disabled = false;
+            errorMsg.classList.add('hidden');
+            
+            if (!event || event.target.innerText === "Reset to Empty") {
+                username.value = "";
+                password.value = "";
+            }
+        }
+    </script>
+</body></html>
