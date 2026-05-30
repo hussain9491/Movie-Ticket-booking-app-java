@@ -25,7 +25,7 @@ When using `full-seed.sql`, these users are pre-created:
 
 ## Quick Setup (PowerShell)
 ```powershell
-Set-Location "C:\Users\AHMED HUSSAIN\IdeaProjects\CineBook"
+Set-Location "C:\Users\user1542\Desktop\uni-assignments\2nd-semester\OOPS-Labs-faique\Movie-Ticket-booking-app>"
 $env:JAVA_HOME="C:\Program Files\Java\jdk-25"
 $env:Path="$env:JAVA_HOME\bin;$env:Path"
 ```
