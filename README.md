@@ -36,8 +36,8 @@ mysql -u root -p
 ```
 
 ```sql
-SOURCE C:/Users/AHMED HUSSAIN/IdeaProjects/CineBook/src/main/resources/db/schema.sql;
-SOURCE C:/Users/AHMED HUSSAIN/IdeaProjects/CineBook/src/main/resources/db/full-seed.sql;
+SOURCE C:\Users\user1542\Desktop\uni-assignments\2nd-semester\OOPS-Labs-faique\Movie-Ticket-booking-app/src/main/resources/db/schema.sql;
+SOURCE C:\Users\user1542\Desktop\uni-assignments\2nd-semester\OOPS-Labs-faique\Movie-Ticket-booking-app/src/main/resources/db/full-seed.sql;
 EXIT;
 ```
 
